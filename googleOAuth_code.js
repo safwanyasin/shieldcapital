@@ -23,8 +23,7 @@ function initOauth() {
         })
 
         .then(res => res.json())
-        .then(data => formResponse = data)
-        .then(() => loginResponse(formResponse))
+        .then(data => loginResponse(data))
 
         .catch((error) => {
             console.error('Error:', error);
@@ -99,8 +98,7 @@ function continueOauth(code) {
         })
 
         .then(res => res.json())
-        .then(data => formResponse = data)
-        .then(() => saveToken(formResponse))
+        .then(data => saveToken(data))
         .catch((error) => {
             console.error('Error:', error);
 
