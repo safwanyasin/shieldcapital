@@ -109,14 +109,13 @@ function continueOauth(code) {
 //save the generated token in the local storage as a cookie
 function saveToken(res) {               
     window.localStorage.setItem('auth', JSON.stringify(res));
-    console.log(res.name);
     updateAuthState(res);
 }
 
 function updateAuthState(res) {
   alert("hi " + res.name);
   authState = res;
-
+  console.log(res)
   updateElement("#username_text", res.name);
 }
 
