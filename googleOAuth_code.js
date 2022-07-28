@@ -7,6 +7,7 @@ var formResponse = [];
 
 var authState = false;
 
+
 //initialize the authentication API
 
 function initOauth() {
@@ -46,7 +47,7 @@ if (authButton) {
   });
 }
 
-var logoutButton = document.querySelector("#logoutButton");
+var logoutButton = document.querySelector("#logout");
 if (logoutButton) {
   logoutButton.addEventListener("click", (event) => {
     logout();
@@ -114,7 +115,7 @@ function saveToken(res) {
 }
 
 function updateAuthState(res) {
-//   alert("hi " + res.name);
+  alert("hi " + res.name);
   authState = res;
 
   updateElement("#username_text", res.name);
@@ -131,3 +132,4 @@ function logout() {
   window.localStorage.removeItem('auth');
   window.location.reload();
 }
+
