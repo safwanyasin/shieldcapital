@@ -1,5 +1,5 @@
 var login_path = "/oauth/sign-in"
-var redirect_uri = "https://www.theshieldcapital.com/oauth/home"
+var redirect_uri = "https://www.theshieldcapital.com/home"
 var xano_oauth_init_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/init"
 var xano_oauth_continue_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/continue"
 var formHeaders = [];
