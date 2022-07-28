@@ -118,7 +118,6 @@ function updateAuthState(res) {
   authState = res;
 
   updateElement("#username_text", res.name);
-  updateElement("#email", res.email);
 }
 
 function updateElement(id, value) {
