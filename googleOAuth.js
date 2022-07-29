@@ -1,7 +1,7 @@
 var login_path = "/oauth/login"
 var redirect_uri = "https://www.theshieldcapital.com/oauth/myaccount"
 var xano_oauth_init_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/init"
-var xano_oauth_continue_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/continue"
+var xano_oauth_continue_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/login"
 var formHeaders = [];
 var formResponse = [];
 
