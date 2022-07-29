@@ -1,5 +1,5 @@
-var login_path = "/oauth/sign-in"
-var redirect_uri = "https://www.theshieldcapital.com/oauth/home"
+var login_path = "/oauth/login"
+var redirect_uri = "https://www.theshieldcapital.com/oauth/myaccount"
 var xano_oauth_init_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/init"
 var xano_oauth_continue_url = "https://x8ki-letl-twmt.n7.xano.io/api:g5SAoCU9/oauth/google/continue"
 var formHeaders = [];
@@ -70,7 +70,7 @@ window.onload = function() {
         }
       }
 
-      if (!token && curUrl.pathname.indexOf('home') !== -1) {
+      if (!token && curUrl.pathname.indexOf('myaccount') !== -1) {
         document.location.href = login_path;
       }
     }
@@ -117,7 +117,7 @@ function updateAuthState(res) {
   alert("hi " + res.name);
   authState = res;
   console.log(res)
-  updateElement("#username_text", res.name);
+  updateElement("#username", res.name);
 }
 
 function updateElement(id, value) {
