@@ -115,6 +115,7 @@ function saveToken(res) {
 
 function updateAuthState(res) {
   authState = res;
+  console.log(res)
   updateElement("#username", res.name);
   updateElement('#greeting', "Hello, " + res.name + " 👋")
 }
