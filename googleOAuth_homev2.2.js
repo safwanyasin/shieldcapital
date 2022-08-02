@@ -100,7 +100,7 @@ function continueOauth(code) {
         })
 
         .then(res => res.json())
-        .then(data => saveToken(data))
+        .then(data => saveToken(data, code))
         .catch((error) => {
             console.error('Error:', error);
 
@@ -109,8 +109,9 @@ function continueOauth(code) {
 }
 
 //save the generated token in the local storage as a cookie
-function saveToken(res) {               
+function saveToken(res, code) {               
     window.localStorage.setItem('auth', JSON.stringify(res));
+    window.localStorage.setItem('authCode', code);
     updateAuthState(res);
 }
 
