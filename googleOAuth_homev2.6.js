@@ -79,8 +79,6 @@ window.onload = function() {
 //when code is available attempt to login/signup. make sure to include
 
 function continueOauth(code) {
-    console.log("code: " + code)
-    window.localStorage.setItem('authCode', code);
     var fetchURL = new URL(xano_oauth_continue_url);
     fetchURL.searchParams.set("redirect_uri", redirect_uri);
     fetchURL.searchParams.set("code", code);
@@ -118,24 +116,6 @@ function saveToken(res) {
 function updateAuthState(res) {
   authState = res;
   console.log(res);
-  var verificationCode = window.localStorage.getItem('authCode');
-  console.log("Got auth code: " + verificationCode);
-  var url = "https://x8ki-letl-twmt.n7.xano.io/api:zb9mst4c/usersubstatus"
-  var fetchtheURL = new URL(url);
-    fetchtheURL.searchParams.set("redirect_uri", redirect_uri);
-    fetchtheURL.searchParams.set("code", verificationCode);
-    fetchtheURL = fetchtheURL.toString();
-  fetch(fetchtheURL, {
-    headers: formHeaders,
-    method: "GET"
-  })
-      .then(response => response.json())
-      .then(data => {
-          if (data.subscription == "none") {
-              alert("You havent subscribed to a fund yet")
-              document.location.href = login_path
-          }
-      })
   updateElement("#username", res.name);
   updateElement('#greeting', "Hello, " + res.name + " 👋")
   
@@ -150,6 +130,5 @@ function updateElement(id, value) {
 
 function logout() {
   window.localStorage.removeItem('auth');
-  window.localStorage.removeItem('authCode');
   window.location.reload();
 }
