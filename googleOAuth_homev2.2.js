@@ -101,7 +101,7 @@ function continueOauth(code) {
         })
 
         .then(res => res.json())
-        .then(data => saveToken(data, code))
+        .then(data => saveToken(data))
         .catch((error) => {
             console.error('Error:', error);
 
@@ -110,15 +110,17 @@ function continueOauth(code) {
 }
 
 //save the generated token in the local storage as a cookie
-function saveToken(res, code) {               
+function saveToken(res) {               
     window.localStorage.setItem('auth', JSON.stringify(res));
     updateAuthState(res);
 }
 
 function updateAuthState(res) {
   authState = res;
-  console.log(res)
-  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub/" + res.token
+  console.log(res);
+  var verificationCode = window.localStorage.getItem('authCode');
+  console.log("Got auth code: " + verificationCode);
+  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub/" + verificationCode
   var checkSubscriptionStatus = fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -141,5 +143,6 @@ function updateElement(id, value) {
 
 function logout() {
   window.localStorage.removeItem('auth');
+  window.localStorage.removeItem('authCode');
   window.location.reload();
 }
