@@ -120,8 +120,15 @@ function updateAuthState(res) {
   console.log(res);
   var verificationCode = window.localStorage.getItem('authCode');
   console.log("Got auth code: " + verificationCode);
-  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub/" + verificationCode
-  var checkSubscriptionStatus = fetch(url)
+  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub"
+  var fetchURL = new URL(url);
+    fetchURL.searchParams.set("redirect_uri", redirect_uri);
+    fetchURL.searchParams.set("code", code);
+    fetchURL = fetchURL.toString();
+  fetch(fetchURL, {
+    headers: formHeaders,
+    method: "GET"
+  })
       .then(response => response.json())
       .then(data => {
           if (data.subscription == "none") {
