@@ -131,6 +131,7 @@ function updateElement(id, value) {
 
 function logout() {
   window.localStorage.removeItem('auth');
+  window.localStorage.removeItem('authCode');
   window.location.reload();
 }
 
