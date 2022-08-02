@@ -120,12 +120,12 @@ function updateAuthState(res) {
   console.log(res);
   var verificationCode = window.localStorage.getItem('authCode');
   console.log("Got auth code: " + verificationCode);
-  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub"
-  var fetchURL = new URL(url);
-    fetchURL.searchParams.set("redirect_uri", redirect_uri);
-    fetchURL.searchParams.set("code", verificationCode);
-    fetchURL = fetchURL.toString();
-  fetch(fetchURL, {
+  var url = "https://x8ki-letl-twmt.n7.xano.io/api:zb9mst4c/usersubstatus"
+  var fetchtheURL = new URL(url);
+    fetchtheURL.searchParams.set("redirect_uri", redirect_uri);
+    fetchtheURL.searchParams.set("code", verificationCode);
+    fetchtheURL = fetchtheURL.toString();
+  fetch(fetchtheURL, {
     headers: formHeaders,
     method: "GET"
   })
