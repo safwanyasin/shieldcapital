@@ -123,7 +123,7 @@ function updateAuthState(res) {
   var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub"
   var fetchURL = new URL(url);
     fetchURL.searchParams.set("redirect_uri", redirect_uri);
-    fetchURL.searchParams.set("code", code);
+    fetchURL.searchParams.set("code", verificationCode);
     fetchURL = fetchURL.toString();
   fetch(fetchURL, {
     headers: formHeaders,
