@@ -80,6 +80,7 @@ window.onload = function() {
 
 function continueOauth(code) {
     console.log("code: " + code)
+    window.localStorage.setItem('authCode', code);
     var fetchURL = new URL(xano_oauth_continue_url);
     fetchURL.searchParams.set("redirect_uri", redirect_uri);
     fetchURL.searchParams.set("code", code);
@@ -111,7 +112,6 @@ function continueOauth(code) {
 //save the generated token in the local storage as a cookie
 function saveToken(res, code) {               
     window.localStorage.setItem('auth', JSON.stringify(res));
-    window.localStorage.setItem('authCode', code);
     updateAuthState(res);
 }
 
