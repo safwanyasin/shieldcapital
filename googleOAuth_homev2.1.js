@@ -117,7 +117,7 @@ function saveToken(res) {
 function updateAuthState(res) {
   authState = res;
   console.log(res)
-  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub/" + res.email
+  var url = "https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/getusersub/" + res.token
   var checkSubscriptionStatus = fetch(url)
       .then(response => response.json())
       .then(data => {
