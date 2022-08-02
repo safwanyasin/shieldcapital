@@ -115,6 +115,9 @@ function saveToken(res) {
 }
 
 function updateAuthState(res) {
+  if (res.first_time == true) {
+      document.location.href = "https://www.google.com"
+  }
   authState = res;
   console.log(res);
   updateElement("#username", res.name);
