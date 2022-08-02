@@ -79,8 +79,6 @@ window.onload = function() {
 //when code is available attempt to login/signup. make sure to include
 
 function continueOauth(code) {
-    console.log("code: " + code)
-    window.localStorage.setItem('authCode', code);
     var fetchURL = new URL(xano_oauth_continue_url);
     fetchURL.searchParams.set("redirect_uri", redirect_uri);
     fetchURL.searchParams.set("code", code);
@@ -131,7 +129,6 @@ function updateElement(id, value) {
 
 function logout() {
   window.localStorage.removeItem('auth');
-  window.localStorage.removeItem('authCode');
   window.location.reload();
 }
 
