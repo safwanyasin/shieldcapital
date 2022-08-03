@@ -116,7 +116,7 @@ function saveToken(res) {
 
 function updateAuthState(res) {
   if (res.first_time == true) {
-      document.location.href = "https://www.theshieldcapital.com/account"
+      document.location.href = "https://www.theshieldcapital.com/sign-in-details"
   }
   authState = res;
   console.log(res);
