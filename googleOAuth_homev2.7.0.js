@@ -197,6 +197,7 @@ function updateSummaryCard(res) {
       // import the subscription data and add the amount to the amounts array  (index 4)
   }
   var totalAmount = amounts[0] + amounts[1] + amounts[2] + amounts[3] + amounts[4]
+  console.log(totalAmount)
   document.getElementById("total_invested").innerHTML = totalAmount.toLocaleString();
   var btcVal = fetch("https://api.coincap.io/v2/assets/bitcoin/")
   .then(famousCryptoResponse => famousCryptoResponse.json())
