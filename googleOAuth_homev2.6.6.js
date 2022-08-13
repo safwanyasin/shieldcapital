@@ -149,7 +149,7 @@ function updateSummaryCard(res) {
       var fetchRedUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_red");
       fetchRedUrl.searchParams.set("auth", res.user.google_oauth.id)
       fetchRedUrl = fetchRedUrl.toString();
-      fetch(fetchURL, {
+      fetch(fetchRedURL, {
         headers: formHeaders,
         method: "GET"
       })
@@ -162,7 +162,7 @@ function updateSummaryCard(res) {
     var fetchYellowUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_yellow");
     fetchYellowUrl.searchParams.set("auth", res.user.google_oauth.id)
     fetchYellowUrl = fetchYellowUrl.toString();
-    fetch(fetchURL, {
+    fetch(fetchYellowURL, {
       headers: formHeaders,
       method: "GET"
     })
@@ -175,7 +175,7 @@ function updateSummaryCard(res) {
     var fetchGreenUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_green");
     fetchGreenUrl.searchParams.set("auth", res.user.google_oauth.id)
     fetchGreenUrl = fetchGreenUrl.toString();
-    fetch(fetchURL, {
+    fetch(fetchGreenURL, {
       headers: formHeaders,
       method: "GET"
     })
