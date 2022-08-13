@@ -124,6 +124,13 @@ function updateAuthState(res) {
   console.log(res);
   updateElement("#username", res.name);
   updateElement('#greeting', "Hello, " + res.name + " 👋")
+
+  if (res.user.subscription == "none") {
+    // redirect the user to another page
+    document.location.href = "https://www.theshieldcapital.com"
+  } else {
+    updateSummaryCard(res)
+  }
   
 }
 
@@ -132,6 +139,103 @@ function updateElement(id, value) {
   if (el) {
     el.innerHTML = value;
   }
+}
+
+function updateSummaryCard(res) {
+  var amounts = [0, 0, 0, 0, 0]
+  var formHeaders = []
+  subscriptionData = res.user.subscription
+  if (subscriptionData.includes("red")) {
+      var fetchRedUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_red");
+      fetchRedUrl.searchParams.set("auth", res.user.google_oauth.id)
+      fetchRedUrl = fetchRedUrl.toString();
+      fetch(fetchURL, {
+        headers: formHeaders,
+        method: "GET"
+      })
+      .then(response => response.json())
+      .then(data => {
+        amounts[0] = data.investment;
+      })
+  }
+  if (subscriptionData.includes("yellow")) {
+    var fetchYellowUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_yellow");
+    fetchYellowUrl.searchParams.set("auth", res.user.google_oauth.id)
+    fetchYellowUrl = fetchYellowUrl.toString();
+    fetch(fetchURL, {
+      headers: formHeaders,
+      method: "GET"
+    })
+    .then(response => response.json())
+    .then(data => {
+      amounts[1] = data.investment;
+    })
+  }
+  if (subscriptionData.includes("green")) {
+    var fetchGreenUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_green");
+    fetchGreenUrl.searchParams.set("auth", res.user.google_oauth.id)
+    fetchGreenUrl = fetchGreenUrl.toString();
+    fetch(fetchURL, {
+      headers: formHeaders,
+      method: "GET"
+    })
+    .then(response => response.json())
+    .then(data => {
+      amounts[2] = data.investment;
+    })
+  }
+  if (subscriptionData.includes("student")) {
+      // import the subscription data and add the amount to the amounts array  (index 3)
+  }
+  if (subscriptionData.includes("flagship")) {
+      // import the subscription data and add the amount to the amounts array  (index 4)
+  }
+  var totalAmount = amounts[0] + amounts[1] + amounts[2] + amounts[3] + amounts[4]
+  document.getElementById("total_invested").innerHTML = totalAmount.toLocaleString();
+  var btcVal = fetch("https://api.coincap.io/v2/assets/bitcoin/")
+  .then(famousCryptoResponse => famousCryptoResponse.json())
+  .then(data => {
+      var inBtc = totalAmount / data.data.priceUsd
+      document.getElementById("btcVal").innerHTML = inBtc + " BTC";
+  })
+  // donut chart
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Fund', 'Amount'],
+      ['Red Crystal', amounts[0]],
+      ['Yellow Crystal', amounts[1]],
+      ['Green Crystal', amounts[2]],
+      ['Student', amounts[3]],
+      ['Flagship', amounts[4]]
+      ]);
+
+      var options = {
+          chartArea: {
+              width: '95%',
+              height: '95%',
+          },
+          legend: 'none',
+          tooltip: {
+              trigger: 'none'
+          },
+          pieHole: 0.5,
+          slices: {
+            0: {color: '#EC3F46'},
+            1: {color: '#FFD03C'},
+            2: {color: '#53EC77'},
+            3: {color: '#2663ED'},
+            4: {color: '#7A5CE7'}
+          },
+      };
+      document.getElementById("loading_donut").style.display = "none";
+      var chart = new google.visualization.PieChart(document.getElementById('donut_container'));
+      chart.draw(data, options);
+      
+
+  }
+  
 }
 
 function logout() {
