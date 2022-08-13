@@ -157,7 +157,7 @@ function updateSummaryCard(res) {
       .then(data => {
         console.log(data)
         amounts[0] = data.investment;
-        console.log(data.investment);
+        console.log(amounts[0]);
       })
   }
   if (subscriptionData.includes("yellow")) {
@@ -172,7 +172,7 @@ function updateSummaryCard(res) {
     .then(data => {
       console.log(data)
       amounts[1] = data.investment;
-      console.log(data.investment)
+      console.log(amounts[1])
     })
   }
   if (subscriptionData.includes("green")) {
@@ -187,7 +187,7 @@ function updateSummaryCard(res) {
     .then(data => {
       console.log(data)
       amounts[2] = data.investment;
-      console.log(data.investment)
+      console.log(amounts[2])
     })
   }
   if (subscriptionData.includes("student")) {
