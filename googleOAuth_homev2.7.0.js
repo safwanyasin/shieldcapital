@@ -141,7 +141,7 @@ function updateElement(id, value) {
   }
 }
 
-function updateSummaryCard(res) {
+async function updateSummaryCard(res) {
   var amounts = [0, 0, 0, 0, 0]
   var formHeaders = []
   subscriptionData = res.user.subscription
@@ -149,7 +149,7 @@ function updateSummaryCard(res) {
       var fetchRedUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_red");
       fetchRedUrl.searchParams.set("auth", res.user.google_oauth.id)
       fetchRedUrl = fetchRedUrl.toString();
-      fetch(fetchRedUrl, {
+      await fetch(fetchRedUrl, {
         headers: formHeaders,
         method: "GET"
       })
@@ -164,7 +164,7 @@ function updateSummaryCard(res) {
     var fetchYellowUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_yellow");
     fetchYellowUrl.searchParams.set("auth", res.user.google_oauth.id)
     fetchYellowUrl = fetchYellowUrl.toString();
-    fetch(fetchYellowUrl, {
+    await fetch(fetchYellowUrl, {
       headers: formHeaders,
       method: "GET"
     })
@@ -179,7 +179,7 @@ function updateSummaryCard(res) {
     var fetchGreenUrl = new URL("https://x8ki-letl-twmt.n7.xano.io/api:wQY-WEdq/get_green");
     fetchGreenUrl.searchParams.set("auth", res.user.google_oauth.id)
     fetchGreenUrl = fetchGreenUrl.toString();
-    fetch(fetchGreenUrl, {
+    await fetch(fetchGreenUrl, {
       headers: formHeaders,
       method: "GET"
     })
@@ -197,7 +197,7 @@ function updateSummaryCard(res) {
       // import the subscription data and add the amount to the amounts array  (index 4)
   }
   var totalAmount = amounts[0] + amounts[1] + amounts[2] + amounts[3] + amounts[4]
-  console.log(totalAmount)
+  console.log(totalAmount);
   document.getElementById("total_invested").innerHTML = totalAmount.toLocaleString();
   var btcVal = fetch("https://api.coincap.io/v2/assets/bitcoin/")
   .then(famousCryptoResponse => famousCryptoResponse.json())
