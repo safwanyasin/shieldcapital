@@ -155,7 +155,9 @@ function updateSummaryCard(res) {
       })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         amounts[0] = data.investment;
+        console.log(data.investment);
       })
   }
   if (subscriptionData.includes("yellow")) {
@@ -168,7 +170,9 @@ function updateSummaryCard(res) {
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       amounts[1] = data.investment;
+      console.log(data.investment)
     })
   }
   if (subscriptionData.includes("green")) {
@@ -181,7 +185,9 @@ function updateSummaryCard(res) {
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       amounts[2] = data.investment;
+      console.log(data.investment)
     })
   }
   if (subscriptionData.includes("student")) {
