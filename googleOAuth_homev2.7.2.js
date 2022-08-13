@@ -236,7 +236,7 @@ async function updateSummaryCard(res) {
             4: {color: '#7A5CE7'}
           },
           backgroundColor: {
-            fill: '#242130',
+            fill: '#161b27',
           },
       };
       document.getElementById("loading_donut").style.display = "none";
