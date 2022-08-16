@@ -1,5 +1,4 @@
-<script>
-	var currentDate = new Date();
+var currentDate = new Date();
   const unixTimeRounded = Math.floor(currentDate.getTime() / 100000) * 100000
   var oldDate = new Date();
   oldDate.setDate(oldDate.getDate() - 1);
@@ -130,4 +129,3 @@
       window.onresize = resize;
     }
   });
-</script>
