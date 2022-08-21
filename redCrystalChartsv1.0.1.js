@@ -64,6 +64,8 @@ var currentDate = new Date();
   }
   var todaysDate = currentDate.getDate().toString() + "/" + currentDate.getMonth().toString() + "/" + currentDate.getFullYear().toString()
   document.getElementById("marketcap-date").innerHTML = currentDay + ", " + todaysDate
+document.getElementById("return-date").innerHTML = currentDay + ", " + todaysDate
+
 	var xanoDataResponse = fetch("https://x8ki-letl-twmt.n7.xano.io/api:-TxV7DQs/coinmarketcap")
   	.then(response => response.json())
     .then(data => {
