@@ -62,7 +62,7 @@ var currentDate = new Date();
   } else {
     console.log("Error getting the day")
   }
-  var todaysDate = currentDate.getDate().toString() + "/" + currentDate.getMonth().toString() + "/" + currentDate.getFullYear().toString()
+  var todaysDate = currentDate.getDate().toString() + "/" + (currentDate.getMonth() + 1).toString() + "/" + currentDate.getFullYear().toString()
   document.getElementById("marketcap-date").innerHTML = currentDay + ", " + todaysDate
 document.getElementById("return-date").innerHTML = currentDay + ", " + todaysDate
 
